@@ -1,50 +1,45 @@
 # pesante-media
 
-Imágenes y vídeos publicados en las redes de **Pesante Analytics**.
+Images and video published on the social channels of **Pesante Analytics LLC**.
 
-## Por qué este repo es público
+## Why this repository is public
 
-No es un descuido. Instagram no acepta que le subas un archivo: exige una **URL
-pública** desde la que sus servidores descarguen la imagen, de forma anónima. Un
-repo privado devolvería 404.
+It is public on purpose. Instagram does not accept file uploads through its
+publishing API: it requires a **public URL** that Meta's servers fetch
+anonymously. A private repository would return 404.
 
-Todo lo que hay aquí ya está publicado en Facebook o Instagram. No se pierde
-privacidad: se pierde si alguien sube aquí algo que no debía.
+Everything stored here has already been published on Facebook or Instagram, so
+nothing is disclosed that was not already public.
 
-## Reglas
+## Rules
 
-**1. Solo entra lo que ya va a ser público.** Imágenes y vídeos destinados a
-publicarse. Nunca código, `.env`, tokens, datos de clientes, ni capturas de
-informes con cifras reales. El historial de git es público y no se borra de
-verdad.
+**1. Only publish-ready media.** Images and video intended for social channels.
+Never code, configuration, credentials, customer data, or screenshots containing
+real figures. Git history is public and cannot be truly erased.
 
-**2. Nombres `AAAA-MM-DD-slug.ext`**, en minúsculas, sin acentos ni espacios.
-La fecha delante ordena el repo y permite cruzarlo con los registros de
-publicación.
+**2. File names follow `YYYY-MM-DD-slug.ext`**, lowercase, no accents or spaces.
+The leading date keeps the folder in chronological order and makes each file
+traceable to the post that uses it.
 
-**3. Solo se añade.** No borres ni renombres nada ya publicado: una publicación
-de Facebook puede seguir apuntando a esa URL. Si algo sale mal, sube un archivo
-nuevo con otro nombre.
+**3. Append only.** Never delete or rename a file that has been published. A
+Facebook post may still reference that URL, and removing it breaks the image. If
+something is wrong, upload a new file under a new name.
 
-**4. Instagram solo acepta JPEG.** El PNG vale para Facebook, no para Instagram.
+**4. Instagram accepts JPEG only.** PNG works for Facebook but fails on
+Instagram.
 
-## Estructura
+## Layout
 
 ```
-img/    imágenes y vídeos, un archivo por publicación
+img/    one file per published post
 ```
 
-## Cómo se sube
+## Uploading
 
-No a mano. Desde el proyecto `AutomatizarDatos`:
+Files are uploaded by an automated pipeline, not by hand. The pipeline validates
+these rules before the upload, refuses to overwrite an existing file, and
+verifies that the resulting URL is reachable anonymously before it is used.
 
-```powershell
-python scripts\publicar_media.py --archivo contenido\2026-08-11-tema.jpg
-```
+---
 
-Ese script comprueba las reglas antes de subir, se niega a sobrescribir un
-archivo existente, y verifica que la URL responde de forma anónima antes de darla
-por buena.
-
-Las reglas completas y el porqué de cada decisión están en
-`AutomatizarDatos/docs/MEDIOS.md` (repo privado).
+Pesante Analytics LLC — https://www.pesanteanalytics.com
